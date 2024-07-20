@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+
+	
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fortune Teller Home</title>
+	<style type="text/css">
+		
+		body {
+
+			background-color: lightblue;
+		}
+		h1 {
+			color: blue;
+			text-align: center;
+		}
+
+		p{
+			font-size: 50;
+			text-align: center;
+		}
+
+		a{
+			color: red;
+            text-decoration: none;
+            font-weight: bold;
+			position: absolute;
+            top: 150px;
+            left: 875px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<h1> Welcome To The Fortune Teller</h1>
+	<p> Click the link below to recive your fortune</p>
+	<a href="/fortune" >Click here!!!</a>
+	<img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2019/05/Genie-Aladdin-2.jpg" style="align-items: center;", "width: 300px; height: 400;">
+
+
+
+
+<form action="/Home" method="POST">
+	<input type="text" name="birth_month" placeholder="birth_month" required>
+	<button type="submit">Tell my fortune </button>
+        
+
+     
+</form>
+
+{%if fortune%}
+<h2>Your fortune:</h2>
+<p>{{fortune}}</p>
+{%endif%}
+
+</body>
+</html>
