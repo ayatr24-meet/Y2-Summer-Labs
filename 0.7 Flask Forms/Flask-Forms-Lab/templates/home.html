@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+
+	
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fortune Teller Home</title>
+	<style type="text/css">
+		
+		body {
+
+			background-color: lightblue;
+		}
+		h1 {
+			color: blue;
+			text-align: center;
+		}
+
+		p{
+			font-size: 50;
+			text-align: center;
+		}
+
+		a{
+			color: red;
+            text-decoration: none;
+            font-weight: bold;@app.route('/create, methods=['GET', 'POST'])
+
+
+			position: absolute;
+            top: 150px;
+            left: 875px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<center>
+		<br><br><br>
+		<h3> Name:{{session['name']}}</h3>
+		<h3>Birth month:{{session['birthmonth']}}</h3>
+		<a href="{{url_for('fortune')}}"><button>Tell me my fortunr!</a>
+	</center>
+	
+	
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,20 +1,27 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask import session 
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='templates',static_folder='static')
+app.config['SECRET_KEY'] = "123456"
+@app.route('/')
+def login():
+    return render_template('login.html')
 
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        birth_month = request.form.get('birth_month', '')
-        if not birth_month:
-            return "Error: Birth month not provided", 400
-        return redirect(url_for('fortune', month=birth_month))
-    return render_template('home1.html')
+        n= request.form['name']
+        b= request.form['month']
+        session['name']=n 
+        session['birthmonth']=b 
+        return redirect(url_for('home'))
+    return render_template('home.html')
+    
 
-@app.route('/fortune')
+@app.route('/fortune1',methods=['GET'])
 def fortune():
-    month = request.args.get('month', '')
+    return render_template("fortune1.html")
     fortunes = [
         "You will soon embark on a journey that will change your life.",
         "A surprise gift will bring you great joy.",
@@ -28,15 +35,14 @@ def fortune():
         "A new adventure is on the horizon. Embrace it!"
     ]
     
+    month = session.get('birthmonth','')
+    x = len(month)
+    if x > 10 or x == 0 :
+        return redirect(url_for('login'))
+    f = fortunes[x]
+    return render_template("fortune1.html", f=f)    
    
-    month_length = len(month)
-    index = month_length % len(fortunes)
     
-    
-    fortune = fortunes[index]
-    
-   
-    return render_template('fortune1.html', fortune=fortune)
 
 if __name__ == '__main__':
     app.run(debug=True)
