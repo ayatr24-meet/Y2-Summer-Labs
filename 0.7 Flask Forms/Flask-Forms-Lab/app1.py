@@ -21,7 +21,7 @@ def home():
 
 @app.route('/fortune1',methods=['GET'])
 def fortune():
-    return render_template("fortune1.html")
+    
     fortunes = [
         "You will soon embark on a journey that will change your life.",
         "A surprise gift will bring you great joy.",
@@ -34,7 +34,7 @@ def fortune():
         "Your positive attitude will lead you to happiness.",
         "A new adventure is on the horizon. Embrace it!"
     ]
-    
+
     month = session.get('birthmonth','')
     x = len(month)
     if x > 10 or x == 0 :
